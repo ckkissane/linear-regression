@@ -1,7 +1,7 @@
 import random
 
-def predict(w, b, x):
-    return w * x + b
+def predict(w, b, x_i):
+    return w * x_i + b
 
 def error(w, b, x_i, y_i):
         return y_i - predict(w, b, x_i)
@@ -14,20 +14,19 @@ def squared_error_gradient(x_i, y_i, theta):
     w, b = theta
     return [-2 * x_i * error(w, b, x_i, y_i), -2 * error(w, b, x_i, y_i)]
 
-def in_random_order(data):
-    indexes = [i for i, _ in enumerate(data)]
-    random.shuffle(indexes)
-    for i in indexes:
-        yield data[i]
-
 def vector_subtract(v, w):
     return [v_i - w_i for v_i, w_i in zip(v, w)]
 
 def scalar_multiply(c, v):
     return [c * v_i for v_i in v]
 
-def minimize_stochastic(target_fn, gradient_fn, x, y, theta_0, alpha_0=0.01):
+def in_random_order(data):
+    indexes = [i for i, _ in enumerate(data)]
+    random.shuffle(indexes)
+    for i in indexes:
+        yield data[i]
 
+def minimize_stochastic(target_fn, gradient_fn, x, y, theta_0, alpha_0=0.01):
     data = list(zip(x, y))
     theta, alpha  = theta_0, alpha_0
     min_theta, min_value = None, float('inf')
