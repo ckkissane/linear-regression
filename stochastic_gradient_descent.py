@@ -1,10 +1,13 @@
 import random
 
+
 def vector_subtract(v, w):
     return [v_i - w_i for v_i, w_i in zip(v, w)]
 
+
 def scalar_multiply(c, v):
     return [c * v_i for v_i in v]
+
 
 def in_random_order(data):
     indexes = [i for i, _ in enumerate(data)]
@@ -12,10 +15,11 @@ def in_random_order(data):
     for i in indexes:
         yield data[i]
 
+
 def minimize_stochastic(target_fn, gradient_fn, x, y, theta_0, alpha_0=0.01):
     data = list(zip(x, y))
-    theta, alpha  = theta_0, alpha_0
-    min_theta, min_value = None, float('inf')
+    theta, alpha = theta_0, alpha_0
+    min_theta, min_value = None, float("inf")
     iterations_without_improvement = 0
 
     while iterations_without_improvement < 100:
