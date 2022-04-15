@@ -1,2 +1,2 @@
 # linear-regression
-Simple implementation of a linear regression as an exercise to grok gradient descent.
+A simple implementation of a linear regression, mainly as an exercise to understand stochastic gradient descent.
